@@ -8,7 +8,7 @@ export async function loginHandler() {
   const password = passwordEl.value.trim();
 
   if (!username || !password) {
-    errorMsgEl.textContent = "Please enter both username/email and password.";
+    errorMsgEl.textContent = "Please enter both username and password.";
     return;
   }
 
