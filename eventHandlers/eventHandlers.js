@@ -1,6 +1,12 @@
 import { usernameOrEmailEl, passwordEl, errorMsgEl } from "../queries.js";
 import { getUserJWT } from "../data/getUserJWT.js";
-let jwtToken = localStorage.getItem("jwt") || null;
+import {
+  retrieveJwtFromStorage,
+  saveJwtToLocalStorage,
+  removeJwtFromLocalStorage,
+} from "../data/storage.js";
+
+let jwtToken = retrieveJwtFromStorage();
 
 // Handle login
 export async function loginHandler() {
@@ -19,7 +25,7 @@ export async function loginHandler() {
     }
 
     jwtToken = token;
-    localStorage.setItem("jwt", jwtToken);
+    saveJwtToLocalStorage(jwtToken);
     errorMsgEl.textContent = "";
     alert("Login successful!");
   } catch (error) {
@@ -30,7 +36,7 @@ export async function loginHandler() {
 
 export function logoutHandler() {
   jwtToken = null;
-  localStorage.removeItem("jwt");
+  removeJwtFromLocalStorage();
   console.log("Logged out");
   alert("Logged out successfully!");
 }
