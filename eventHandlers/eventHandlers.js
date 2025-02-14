@@ -1,5 +1,5 @@
 import { usernameEl, passwordEl, errorMsgEl } from "../queries.js";
-import { getJWT } from "../data/getJWT.js";
+import { getUserJWT } from "../data/getUserJWT.js";
 let jwtToken = localStorage.getItem("jwt") || null;
 
 // Handle login
@@ -13,7 +13,7 @@ export async function loginHandler() {
   }
 
   try {
-    const token = await getJWT(username, password);
+    const token = await getUserJWT(username, password);
     if (!token) {
       throw new Error("Token not found in the response");
     }
