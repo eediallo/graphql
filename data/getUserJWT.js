@@ -19,5 +19,5 @@ export async function getUserJWT(usernameOrEmail, password) {
     throw new Error(error || "Invalid credentials or unauthorized access");
   }
 
-  return await resp.text();
+  return await resp.json();
 }
