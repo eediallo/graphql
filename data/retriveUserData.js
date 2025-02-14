@@ -1,11 +1,11 @@
 import { retrieveJwtFromStorage } from "./storage.js";
-import { loginHandler } from "../eventHandlers/eventHandlers.js";
 import { getUserData } from "./getUserData.js";
+import { login } from "../eventHandlers/login.js";
 
 export async function loginAndRetriveUserData(e) {
-  e.preventDefault();
-  loginHandler();
+  await login(e);
   const jwt = retrieveJwtFromStorage();
   const userData = await getUserData(jwt);
+  console.log("userdata===>", userData);
   return userData;
 }
