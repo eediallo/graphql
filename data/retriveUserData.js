@@ -6,6 +6,6 @@ export async function loginAndRetriveUserData(e) {
   e.preventDefault();
   loginHandler();
   const jwt = retrieveJwtFromStorage();
-  const userTable = await getUserData(jwt);
-  console.log(userTable);
+  const userData = await getUserData(jwt);
+  return userData;
 }
