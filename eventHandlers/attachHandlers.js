@@ -1,10 +1,10 @@
 import { loginBtn, logoutBtn } from "../queries/domQueries.js";
-import { loginAndRetriveUserData } from "../data/retriveUserData.js";
 import { logout } from "./logout.js";
+import { login } from "./login.js";
 
 export function attachEventHandlers() {
   loginBtn.addEventListener("click", async (e) => {
-    await loginAndRetriveUserData(e);
+    await login(e);
   });
   logoutBtn.addEventListener("click", logout);
 }
