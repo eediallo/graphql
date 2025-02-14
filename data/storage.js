@@ -1,5 +1,8 @@
 export function getData(key) {
-  return localStorage.getItem(key) || null;
+  if (key === "jwt") {
+    return localStorage.getItem(key);
+  }
+  return JSON.parse(localStorage.getItem(key)) || null;
 }
 
 export function saveJwtToLocalStorage(jwtToken) {
