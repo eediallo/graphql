@@ -1,10 +1,4 @@
-const profileQuery = `#graphql
-{
-    user {
-        attrs
-        campus
-    }
-}`;
+import { graphqlQueries } from "../queries/grapqlQueries.js";
 
 const dataEndpoint =
   "https://learn.01founders.co/api/graphql-engine/v1/graphql";
@@ -17,7 +11,7 @@ export async function getUserData(jwt) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`, // Include the JWT token
       },
-      body: JSON.stringify({ query: profileQuery }),
+      body: JSON.stringify({ query: graphqlQueries.profileQuery }),
     });
 
     if (!resp.ok) {
