@@ -4,8 +4,8 @@ function encodeCredentials(usernameOrEmail, password) {
   return btoa(`${usernameOrEmail}:${password}`);
 }
 
-export async function getUserJWT(uername, password) {
-  const encodedCredentials = encodeCredentials(uername, password);
+export async function getUserJWT(usernameOrEmail, password) {
+  const encodedCredentials = encodeCredentials(usernameOrEmail, password);
   const resp = await fetch(loginEndpoint, {
     method: "POST",
     headers: {
