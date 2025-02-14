@@ -1,4 +1,4 @@
-import { retrieveJwtFromStorage } from "./storage.js";
+import { getData } from "./storage.js";
 
 function decodeUserJWT(token) {
   try {
@@ -13,7 +13,7 @@ function decodeUserJWT(token) {
 
 export function getUserId() {
   let userId = "";
-  const jwtToken = retrieveJwtFromStorage();
+  const jwtToken = getData("jwt");
   if (jwtToken) {
     const payload = decodeUserJWT(jwtToken);
     if (payload) {

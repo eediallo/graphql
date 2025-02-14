@@ -1,7 +1,4 @@
-import {
-  saveJwtToLocalStorage,
-  retrieveJwtFromStorage,
-} from "../data/storage.js";
+import { saveJwtToLocalStorage, getData } from "../data/storage.js";
 import { passwordEl, usernameOrEmailEl } from "../queries/domQueries.js";
 import { getUserJWT } from "../data/getUserJWT.js";
 import { redirectToPage } from "../redirect.js";
@@ -23,7 +20,7 @@ export async function login(e) {
       throw new Error("Token not found in the response");
     }
 
-    let jwtToken = retrieveJwtFromStorage();
+    let jwtToken = getData("jwt");
     jwtToken = token;
 
     saveJwtToLocalStorage(jwtToken);
