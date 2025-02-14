@@ -1,10 +1,10 @@
-import { usernameEl, passwordEl, errorMsgEl } from "../queries.js";
+import { usernameOrEmailEl, passwordEl, errorMsgEl } from "../queries.js";
 import { getUserJWT } from "../data/getUserJWT.js";
 let jwtToken = localStorage.getItem("jwt") || null;
 
 // Handle login
 export async function loginHandler() {
-  const username = usernameEl.value.trim();
+  const usernameOrEmail = usernameOrEmailEl.value.trim();
   const password = passwordEl.value.trim();
 
   if (!username || !password) {
@@ -13,7 +13,7 @@ export async function loginHandler() {
   }
 
   try {
-    const token = await getUserJWT(username, password);
+    const token = await getUserJWT(usernameOrEmail, password);
     if (!token) {
       throw new Error("Token not found in the response");
     }
