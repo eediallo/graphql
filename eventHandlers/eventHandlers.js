@@ -30,6 +30,8 @@ export async function loginHandler() {
     jwtToken = token;
     saveJwtToLocalStorage(jwtToken);
     errorMsgEl.textContent = "";
+    usernameOrEmailEl.value = "";
+    passwordEl.value = "";
     alert("Login successful!");
   } catch (error) {
     errorMsgEl.textContent = error.message;
