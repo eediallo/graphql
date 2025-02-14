@@ -4,6 +4,8 @@ const loginBtn = document.querySelector("#loginBtn");
 const formEl = document.querySelector("form");
 const errorMsgEl = document.querySelector("#errorMsgEl");
 const logoutBtn = document.querySelector("#logoutBtn");
+const firstName = document.querySelector("#firstName");
+
 export {
   usernameOrEmailEl,
   passwordEl,
@@ -11,4 +13,5 @@ export {
   formEl,
   errorMsgEl,
   logoutBtn,
+  firstName,
 };
