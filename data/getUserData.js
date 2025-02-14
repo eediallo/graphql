@@ -22,7 +22,6 @@ export async function getUserData(jwt) {
     }
 
     const data = await resp.json();
-    console.log(data, "user table");
     return data;
   } catch (error) {
     console.error("Error fetching user table:", error);
