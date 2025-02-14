@@ -1,6 +1,6 @@
 import { attachEventHandlers } from "./eventHandlers/attachHandlers.js";
 
-function main() {
+async function main() {
   attachEventHandlers();
 }
 
