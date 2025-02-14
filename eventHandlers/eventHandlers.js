@@ -1,4 +1,8 @@
-import { usernameOrEmailEl, passwordEl, errorMsgEl } from "../queries.js";
+import {
+  usernameOrEmailEl,
+  passwordEl,
+  errorMsgEl,
+} from "../queries/domQueries.js";
 import { getUserJWT } from "../data/getUserJWT.js";
 import {
   retrieveJwtFromStorage,
@@ -8,7 +12,6 @@ import {
 
 let jwtToken = retrieveJwtFromStorage();
 
-// Handle login
 export async function loginHandler() {
   const usernameOrEmail = usernameOrEmailEl.value.trim();
   const password = passwordEl.value.trim();
@@ -25,6 +28,7 @@ export async function loginHandler() {
     }
 
     jwtToken = token;
+    console.log(jwtToken, "<<<===tokein in login");
     saveJwtToLocalStorage(jwtToken);
     errorMsgEl.textContent = "";
     alert("Login successful!");
