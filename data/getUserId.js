@@ -12,7 +12,7 @@ function decodeUserJWT(token) {
 }
 
 export function getUserId() {
-  let userId = "";
+  let userId;
   const jwtToken = getData("jwt");
   if (jwtToken) {
     const payload = decodeUserJWT(jwtToken);
