@@ -28,7 +28,6 @@ export async function loginHandler() {
     }
 
     jwtToken = token;
-    console.log(jwtToken, "<<<===tokein in login");
     saveJwtToLocalStorage(jwtToken);
     errorMsgEl.textContent = "";
     alert("Login successful!");
