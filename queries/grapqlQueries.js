@@ -12,11 +12,9 @@ const rewardTransactionQuery = `#graphql
     type,
     amount,
     userId,
-    createdAt,
-    path,
-    objectId,
     eventId,
-    campus
+    campus,
+    path,
   }
 }
 `;
