@@ -1,23 +1,9 @@
-import { getUserId } from "../data/getUserId.js";
-import { getData } from "../data/storage.js";
+import { transactionsTableHeaders, userData } from "../data/data.js";
 import {
   goTransTable,
   jsTransTable,
   xpTransTable,
 } from "../queries/domQueries.js";
-
-const tableHeaders = [
-  {
-    id: "ID",
-    type: "Type",
-    amount: "Amount",
-    campus: "Campus",
-    path: "Path",
-  },
-];
-
-const userId = getUserId();
-const userData = getData(userId);
 
 const transactionData = userData[1].data.transaction;
 const golangTransactionData = transactionData.filter(
@@ -71,7 +57,7 @@ function createTableHeadCeils(data) {
 }
 
 function createTableHeader() {
-  const tableCeils = tableHeaders.map(createTableHeadCeils);
+  const tableCeils = transactionsTableHeaders.map(createTableHeadCeils);
   const tHeader = createAndAppendToElement(tableCeils, "thead");
   return tHeader;
 }
