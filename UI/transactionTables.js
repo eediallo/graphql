@@ -62,8 +62,9 @@ function createTableHeader() {
 }
 
 export function createTableRow() {
+  const caption = createElement("Your transactions stats", "caption");
   const tHeader = createTableHeader();
   const transactionList = transactionData.map(createTableCeils);
   const tBody = createAndAppendToElement(transactionList, "tbody");
-  document.querySelector("#transaction-table").append(tHeader, tBody);
+  document.querySelector("#transaction-table").append(caption, tHeader, tBody);
 }

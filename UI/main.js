@@ -1,6 +1,6 @@
 import { getUserId } from "../data/getUserId.js";
 import { getData } from "../data/storage.js";
-import { createTableRow } from "./createTable.js";
+import { createTableRow } from "./transactionTables.js";
 import { displayFirstName } from "./displayFirstName.js";
 
 function main() {
