@@ -5,6 +5,7 @@ import { displayFirstName } from "./displayFirstName.js";
 function main() {
   const userId = getUserId();
   const userData = getData(userId);
+  console.log(userData, '<====user DATA====')
   for (const { attrs, campus } of userData.data.user) {
     displayFirstName(attrs.firstName);
   }

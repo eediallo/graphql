@@ -1,7 +1,7 @@
 const dataEndpoint =
   "https://learn.01founders.co/api/graphql-engine/v1/graphql";
 
-export async function getUserProfile(jwt, query) {
+export async function getUserData(jwt, query) {
   try {
     const resp = await fetch(dataEndpoint, {
       method: "POST",
