@@ -23,7 +23,7 @@ function createElement(content, tag) {
   return element;
 }
 
-function createAndToElement(elements, tag) {
+function createAndAppendToElement(elements, tag) {
   const element = document.createElement(tag);
   element.append(...elements);
   return element;
@@ -34,7 +34,7 @@ export function createTableCeils(data) {
   const transAmount = createElement(data.amount, "td");
   const transCampus = createElement(data.campus, "td");
   const transPath = createElement(data.path, "td");
-  const transTr = createAndToElement(
+  const transTr = createAndAppendToElement(
     [transId, transType, transAmount, transCampus, transPath],
     "tr"
   );
@@ -43,13 +43,13 @@ export function createTableCeils(data) {
 
 function createTableHeader() {
   const tableCeils = tableHeaders.map(createTableCeils);
-  const tHeader = createAndToElement(tableCeils, "th");
+  const tHeader = createAndAppendToElement(tableCeils, "th");
   return tHeader;
 }
 
 export function createTableRow() {
   const tHeader = createTableHeader();
   const transactionList = transactionData.map(createTableCeils);
-  const tBody = createAndToElement(transactionList, "tbody");
+  const tBody = createAndAppendToElement(transactionList, "tbody");
   document.querySelector("#transaction-table").append(tHeader, tBody);
 }
