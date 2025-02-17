@@ -1,12 +1,12 @@
-const data = [
-  {
-    id: 13,
-    type: "Golang",
-    amount: 35,
-    CreatedAt: 2025,
-    path: "www.example.com",
-  },
-];
+import { getUserId } from "../data/getUserId.js";
+import { getData } from "../data/storage.js";
+
+
+const userId = getUserId();
+const userData = getData(userId);
+
+const transactionData = userData[1].data.transaction;
+console.log(transactionData, "transaction");
 
 function createElement(content, tag) {
   const element = document.createElement(tag);
@@ -33,6 +33,6 @@ export function createTableCeils(data) {
 }
 
 export function createTableRow() {
-  const tdansactionList = data.map(createTableCeils);
+  const tdansactionList = transactionData.map(createTableCeils);
   document.body.append(...tdansactionList);
 }
