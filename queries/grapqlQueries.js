@@ -13,7 +13,6 @@ const rewardTransactionQuery = `#graphql
     type,
     amount,
     userId,
-    attrs,
     createdAt,
     path,
     objectId,
@@ -38,9 +37,9 @@ const roleQuery = `#graphql
 
 const progressQuery = `#graphql
 {
-  progress {
+  progress(where: {eventId: {_eq: 433}}) {
     id,
-    createAt,
+    createdAt,
     updatedAt,
     userId,
     groupId,
