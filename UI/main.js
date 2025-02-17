@@ -1,10 +1,10 @@
 import { getUserId } from "../data/getUserId.js";
 import { getData } from "../data/storage.js";
-import { createTableRow } from "./transactionTables.js";
+import { createTransactonTable } from "./transactionTables.js";
 import { displayFirstName } from "./displayFirstName.js";
 
 function main() {
-  createTableRow();
+  createTransactonTable();
   const userId = getUserId();
   const userData = getData(userId);
   console.log(userData, "<====user DATA====");

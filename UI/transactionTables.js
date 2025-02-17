@@ -61,7 +61,7 @@ function createTableHeader() {
   return tHeader;
 }
 
-export function createTableRow() {
+export function createTransactonTable() {
   const caption = createElement("Your transactions stats", "caption");
   const tHeader = createTableHeader();
   const transactionList = transactionData.map(createTableCeils);
