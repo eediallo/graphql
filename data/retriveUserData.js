@@ -1,5 +1,5 @@
 import { getData } from "./storage.js";
-import { getUserProfile } from "./getUserData.js";
+import { getUserProfile } from "./getUserProfile.js";
 import { graphqlQueries } from "../queries/grapqlQueries.js";
 
 export async function retriveUserData() {
