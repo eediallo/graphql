@@ -6,6 +6,15 @@ const profileQuery = `#graphql
     }
 }`;
 
+const transactionQuery = `#graphql
+{
+  user {
+    xp
+  }
+}
+
+`
+
 export const graphqlQueries = {
   profileQuery,
 };
