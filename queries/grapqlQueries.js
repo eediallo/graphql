@@ -5,10 +5,9 @@ const profileQuery = `#graphql
         campus
     }
 }`;
-
 const rewardTransactionQuery = `#graphql
 {
-  transaction {
+  transaction(where: {eventId: {_eq: 433}, type: {_in: ["skill_js", "skill_go", "xp"]}}) {
     id,
     type,
     amount,
