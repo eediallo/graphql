@@ -43,14 +43,13 @@ export function createTableCeils(data) {
 
 function createTableHeader() {
   const tableCeils = tableHeaders.map(createTableCeils);
-  console.log(tableCeils, "<===ceils");
   const tHeader = createAndToElement(tableCeils, "th");
   return tHeader;
 }
 
 export function createTableRow() {
   const tHeader = createTableHeader();
-  console.log(tHeader);
-  const tdansactionList = transactionData.map(createTableCeils);
-  document.body.append(tHeader, ...tdansactionList);
+  const transactionList = transactionData.map(createTableCeils);
+  const tBody = createAndToElement(transactionList, "tbody");
+  document.querySelector("#transaction-table").append(tHeader, tBody);
 }
