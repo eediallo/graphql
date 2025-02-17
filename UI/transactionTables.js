@@ -1,5 +1,10 @@
 import { getUserId } from "../data/getUserId.js";
 import { getData } from "../data/storage.js";
+import {
+  goTransTable,
+  jsTransTable,
+  xpTransTable,
+} from "../queries/domQueries.js";
 
 const tableHeaders = [
   {
@@ -15,7 +20,17 @@ const userId = getUserId();
 const userData = getData(userId);
 
 const transactionData = userData[1].data.transaction;
-console.log(transactionData, "transaction");
+const golangTransactionData = transactionData.filter(
+  (trans) => trans.type === "skill_go"
+);
+
+const javaScriptTransactionData = transactionData.filter(
+  (trans) => trans.type === "skill_js"
+);
+
+const xpTransactionData = transactionData.filter(
+  (trans) => trans.type === "xp"
+);
 
 function createElement(content, tag) {
   const element = document.createElement(tag);
@@ -61,10 +76,40 @@ function createTableHeader() {
   return tHeader;
 }
 
-export function createTransactonTable() {
-  const caption = createElement("Your transactions stats", "caption");
+export function createTransactonTable(transData, captionString, table) {
+  const caption = createElement(captionString, "caption");
   const tHeader = createTableHeader();
-  const transactionList = transactionData.map(createTableCeils);
+  const transactionList = transData.map(createTableCeils);
   const tBody = createAndAppendToElement(transactionList, "tbody");
-  document.querySelector("#transaction-table").append(caption, tHeader, tBody);
+  table.append(caption, tHeader, tBody);
+}
+
+function javaScriptTransactionTable() {
+  createTransactonTable(
+    javaScriptTransactionData,
+    "Your Transaction in JavaScript",
+    jsTransTable
+  );
+}
+
+function xpTransactionTable() {
+  createTransactonTable(
+    xpTransactionData,
+    "Your XPs transaction",
+    xpTransTable
+  );
+}
+
+function golangTransactionTable() {
+  createTransactonTable(
+    golangTransactionData,
+    "Your transactions in Golang",
+    goTransTable
+  );
+}
+
+export function renderTransTables() {
+  golangTransactionTable();
+  javaScriptTransactionTable();
+  xpTransactionTable();
 }
