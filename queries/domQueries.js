@@ -9,6 +9,7 @@ const transactionsContainer = document.querySelector("#transactions-container");
 const goTransTable = document.querySelector("#go-trans-table");
 const jsTransTable = document.querySelector("#js-trans-table");
 const xpTransTable = document.querySelector("#xp-trans-table");
+const profileContainer = document.querySelector("#profile-container");
 
 export {
   usernameOrEmailEl,
@@ -22,4 +23,5 @@ export {
   goTransTable,
   jsTransTable,
   xpTransTable,
+  profileContainer,
 };
