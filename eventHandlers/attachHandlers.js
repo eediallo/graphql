@@ -1,7 +1,17 @@
-import { goTransBtn, loginBtn, logoutBtn } from "../queries/domQueries.js";
+import {
+  goTransBtn,
+  jsTransBtn,
+  loginBtn,
+  logoutBtn,
+  xpTransBtn,
+} from "../queries/domQueries.js";
 import { logout } from "./logout.js";
 import { login } from "./login.js";
-import { golangTransactionTable } from "../UI/transactionTables.js";
+import {
+  golangTransactionTable,
+  javaScriptTransactionTable,
+  xpTransactionTable,
+} from "../UI/transactionTables.js";
 
 export function attachEventHandlers() {
   if (loginBtn) {
@@ -13,5 +23,15 @@ export function attachEventHandlers() {
   if (loginBtn) {
     logoutBtn.addEventListener("click", logout);
   }
-  goTransBtn.addEventListener("click", golangTransactionTable);
+
+  if (goTransBtn) {
+    goTransBtn.addEventListener("click", golangTransactionTable);
+  }
+  if (xpTransBtn) {
+    xpTransBtn.addEventListener("click", xpTransactionTable);
+  }
+
+  if (jsTransBtn) {
+    jsTransBtn.addEventListener("click", javaScriptTransactionTable);
+  }
 }
