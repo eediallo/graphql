@@ -14,13 +14,14 @@ export function createAndAppendToElement(elements, tag) {
 }
 
 export function createTableCeils(data) {
+  const projectName = data.path.split("/").at(-1);
   const transId = createElement(data.id, "td");
   const transType = createElement(data.type, "td");
   const transAmount = createElement(data.amount, "td");
   const transCampus = createElement(data.campus, "td");
-  const transPath = createElement(data.path, "td");
+  const transPath = createElement(projectName, "td");
   const transTr = createAndAppendToElement(
-    [transId, transType, transAmount, transCampus, transPath],
+    [transId, transPath, transType, transAmount, transCampus],
     "tr"
   );
   return transTr;
@@ -31,9 +32,9 @@ export function createTableHeadCeils(data) {
   const transType = createElement(data.type, "th");
   const transAmount = createElement(data.amount, "th");
   const transCampus = createElement(data.campus, "th");
-  const transPath = createElement(data.path, "th");
+  const transProject = createElement(data.project, "th");
   const transTr = createAndAppendToElement(
-    [transId, transType, transAmount, transCampus, transPath],
+    [transId, transProject, transType, transAmount, transCampus],
     "tr"
   );
 
