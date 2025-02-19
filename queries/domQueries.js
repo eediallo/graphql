@@ -10,6 +10,9 @@ const goTransTable = document.querySelector("#go-trans-table");
 const jsTransTable = document.querySelector("#js-trans-table");
 const xpTransTable = document.querySelector("#xp-trans-table");
 const profileContainer = document.querySelector("#profile-container");
+const goTransBtn = document.querySelector("#goTransBtn");
+const jsTransBtn = document.querySelector("#jsTransBtn");
+const xpTransBtn = document.querySelector("#xpTransBtn");
 
 export {
   usernameOrEmailEl,
@@ -24,4 +27,7 @@ export {
   jsTransTable,
   xpTransTable,
   profileContainer,
+  goTransBtn,
+  xpTransBtn,
+  jsTransBtn,
 };
