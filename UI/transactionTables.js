@@ -18,13 +18,13 @@ const xpTransactionData = transactionData.filter(
   (trans) => trans.type === "xp"
 );
 
-function createElement(content, tag) {
+export function createElement(content, tag) {
   const element = document.createElement(tag);
-  element.textContent = content;
+  element.innerHTML = content;
   return element;
 }
 
-function createAndAppendToElement(elements, tag) {
+export function createAndAppendToElement(elements, tag) {
   const element = document.createElement(tag);
   element.append(...elements);
   return element;
