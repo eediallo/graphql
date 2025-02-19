@@ -4,6 +4,19 @@ import { getData } from "./storage.js";
 const userID = getUserId();
 const userData = getData(userID);
 
+const transactionData = userData[1].data.transaction;
+const golangTransactionData = transactionData.filter(
+  (trans) => trans.type === "skill_go"
+);
+
+const javaScriptTransactionData = transactionData.filter(
+  (trans) => trans.type === "skill_js"
+);
+
+const xpTransactionData = transactionData.filter(
+  (trans) => trans.type === "xp"
+);
+
 const transactionsTableHeaders = [
   {
     id: "ID",
@@ -22,5 +35,9 @@ const progressTableHeaders = [
     status: "Status",
   },
 ];
-
-export { userData, transactionsTableHeaders, progressTableHeaders };
+const transData = {
+  golangTransactionData,
+  javaScriptTransactionData,
+  xpTransactionData,
+};
+export { userData, transactionsTableHeaders, progressTableHeaders, transData };
