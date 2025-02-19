@@ -14,6 +14,7 @@ const goTransBtn = document.querySelector("#goTransBtn");
 const jsTransBtn = document.querySelector("#jsTransBtn");
 const xpTransBtn = document.querySelector("#xpTransBtn");
 const transTable = document.querySelector("#trans-table");
+const svgContainer = document.querySelector("#svg-container");
 
 export {
   usernameOrEmailEl,
@@ -32,4 +33,5 @@ export {
   xpTransBtn,
   jsTransBtn,
   transTable,
+  svgContainer,
 };
