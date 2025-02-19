@@ -1,5 +1,5 @@
 import { userData } from "../data/data.js";
-import { firstNameEl, profileContainer } from "../queries/domQueries.js";
+import { firstNameEl, personalInfo } from "../queries/domQueries.js";
 import { createElement } from "./helperFunctions.js";
 
 const { firstName, lastName, tel, addressCity, email } =
@@ -23,5 +23,5 @@ export function createUserProfile() {
     `<strong>Campus</strong>: ${userData[0].data.user[0].campus}`,
     "p"
   );
-  profileContainer.append(fullName, emailEl, telEl, locationEl, campusEl);
+  personalInfo.append(fullName, emailEl, telEl, locationEl, campusEl);
 }
