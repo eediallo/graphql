@@ -1,6 +1,6 @@
 #transactions-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     max-width: 100%;
 }
