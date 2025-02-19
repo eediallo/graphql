@@ -59,3 +59,11 @@ body{
 #xp-trans-table tr:hover {
   background-color: #f1f1f1;
 }
+
+#success-rate{
+  color: green;
+}
+
+#failure-rate{
+  color: red;
+}
