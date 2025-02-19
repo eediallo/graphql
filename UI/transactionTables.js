@@ -86,7 +86,8 @@ function xpTransactionTable() {
   );
 }
 
-function golangTransactionTable() {
+export function golangTransactionTable() {
+  goTransTable.innerHTML = "";
   createTransactonTable(
     golangTransactionData,
     "Your transactions in Golang",
