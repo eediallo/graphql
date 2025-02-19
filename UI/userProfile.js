@@ -1,6 +1,6 @@
 import { userData } from "../data/data.js";
 import { firstNameEl, profileContainer } from "../queries/domQueries.js";
-import { createElement } from "./transactionTables.js";
+import { createElement } from "./helperFunctions.js";
 
 const { firstName, lastName, tel, addressCity, email } =
   userData[0].data.user[0].attrs;
