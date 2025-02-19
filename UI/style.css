@@ -10,12 +10,9 @@ body{
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 100%;
-  gap: 40px;
+  gap: 100px;
+  margin-bottom: 30px;
 }
-/* #profile-container{
-  max-width: 700px;
-  margin: 0 auto;
-} */
 
 #transactions-container{
     display: flex;
