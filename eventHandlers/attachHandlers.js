@@ -1,5 +1,6 @@
 import {
   goTransBtn,
+  gradeBtn,
   jsTransBtn,
   loginBtn,
   logoutBtn,
@@ -12,6 +13,7 @@ import {
   javaScriptTransactionTable,
   xpTransactionTable,
 } from "../UI/transactionTables.js";
+import { createProgressTable } from "../UI/progress.js";
 
 export function attachEventHandlers() {
   if (loginBtn) {
@@ -33,5 +35,9 @@ export function attachEventHandlers() {
 
   if (jsTransBtn) {
     jsTransBtn.addEventListener("click", javaScriptTransactionTable);
+  }
+
+  if (gradeBtn) {
+    gradeBtn.addEventListener("click", createProgressTable);
   }
 }
