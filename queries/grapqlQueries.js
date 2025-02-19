@@ -42,9 +42,19 @@ const progressQuery = `#graphql
     groupId,
     eventId,
     version,
+    grade,
     isDone,
     path,
     campus
+  }
+}
+`;
+
+const auditQuery = `#graphql
+{
+  audit {
+    id,
+    grade,
   }
 }
 `;
@@ -54,4 +64,5 @@ export const graphqlQueries = {
   roleQuery,
   progressQuery,
   rewardTransactionQuery,
+  auditQuery,
 };
