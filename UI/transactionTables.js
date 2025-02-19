@@ -3,6 +3,7 @@ import {
   goTransTable,
   jsTransTable,
   xpTransTable,
+  transTable,
 } from "../queries/domQueries.js";
 
 const transactionData = userData[1].data.transaction;
@@ -70,28 +71,26 @@ export function createTransactonTable(transData, captionString, table) {
   table.append(caption, tHeader, tBody);
 }
 
-function javaScriptTransactionTable() {
+export function javaScriptTransactionTable() {
+  transTable.innerHTML = "";
   createTransactonTable(
     javaScriptTransactionData,
     "Your Transaction in JavaScript",
-    jsTransTable
+    transTable
   );
 }
 
-function xpTransactionTable() {
-  createTransactonTable(
-    xpTransactionData,
-    "Your XPs transaction",
-    xpTransTable
-  );
+export function xpTransactionTable() {
+  transTable.innerHTML = "";
+  createTransactonTable(xpTransactionData, "Your XPs transaction", transTable);
 }
 
 export function golangTransactionTable() {
-  goTransTable.innerHTML = "";
+  transTable.innerHTML = "";
   createTransactonTable(
     golangTransactionData,
     "Your transactions in Golang",
-    goTransTable
+    transTable
   );
 }
 
