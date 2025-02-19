@@ -1,10 +1,10 @@
-import { renderTransTables } from "./transactionTables.js";
+import { attachEventHandlers } from "../eventHandlers/attachHandlers.js";
 import { createUserProfile, displayFirstName } from "./userProfile.js";
 
 function main() {
   createUserProfile();
   displayFirstName();
-  renderTransTables();
+  attachEventHandlers();
 }
 
 window.onload = main;
