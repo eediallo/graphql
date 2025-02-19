@@ -1,5 +1,6 @@
 import { transactionsTableHeaders, userData } from "../data/data.js";
-import { svgContainer, transTable } from "../queries/domQueries.js";
+import { transTable } from "../queries/domQueries.js";
+import { createLineGraph } from "./transSvg.js";
 
 const transactionData = userData[1].data.transaction;
 const golangTransactionData = transactionData.filter(
@@ -66,34 +67,6 @@ export function createTransactonTable(transData, captionString, table) {
   const tBody = createAndAppendToElement(transactionList, "tbody");
   table.append(caption, tHeader, tBody);
   createLineGraph(transData);
-}
-
-function createLineGraph(data) {
-  svgContainer.innerHTML = "";
-  const svgNS = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("width", "500");
-  svg.setAttribute("height", "200");
-  svg.setAttribute("viewBox", "0 0 500 200");
-
-  const maxAmount = Math.max(...data.map((d) => d.amount));
-  const scaleX = 500 / data.length;
-  const scaleY = 200 / maxAmount;
-
-  let pathData = "M";
-  data.forEach((d, i) => {
-    const x = i * scaleX;
-    const y = 200 - d.amount * scaleY;
-    pathData += `${x},${y} `;
-  });
-
-  const path = document.createElementNS(svgNS, "path");
-  path.setAttribute("d", pathData.trim());
-  path.setAttribute("stroke", "blue");
-  path.setAttribute("fill", "none");
-
-  svg.appendChild(path);
-  svgContainer.appendChild(svg);
 }
 
 export function javaScriptTransactionTable() {
