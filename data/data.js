@@ -17,6 +17,11 @@ const xpTransactionData = transactionData.filter(
   (trans) => trans.type === "xp"
 );
 
+const progressData = userData[2].data.progress;
+const validProgressData = progressData.filter(
+  (progress) => progress.grade !== null
+);
+
 const transactionsTableHeaders = [
   {
     id: "ID",
@@ -39,5 +44,6 @@ const transData = {
   golangTransactionData,
   javaScriptTransactionData,
   xpTransactionData,
+  validProgressData,
 };
 export { userData, transactionsTableHeaders, progressTableHeaders, transData };

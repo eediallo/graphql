@@ -1,12 +1,7 @@
-import { progressTableHeaders, userData } from "../data/data.js";
+import { progressTableHeaders, transData } from "../data/data.js";
 import { transTable } from "../queries/domQueries.js";
 import { createElement, createAndAppendToElement } from "./helperFunctions.js";
 import { createCircleGraph } from "./progressSvg.js";
-
-const progressData = userData[2].data.progress;
-export const validProgressData = progressData.filter(
-  (progress) => progress.grade !== null
-);
 
 export function createProgressTableCeils(data) {
   const project = data.path.split("/").at(-1);
@@ -44,8 +39,10 @@ export function createProgressTable() {
   transTable.innerHTML = "";
   const caption = createElement("Your grade per project", "caption");
   const tHeader = createProgressTableHeader();
-  const progressList = validProgressData.map(createProgressTableCeils);
+  const progressList = transData.validProgressData.map(
+    createProgressTableCeils
+  );
   const tBody = createAndAppendToElement(progressList, "tbody");
   transTable.append(caption, tHeader, tBody);
-  createCircleGraph(validProgressData);
+  createCircleGraph(transData.validProgressData);
 }
