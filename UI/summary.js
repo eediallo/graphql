@@ -14,6 +14,22 @@ const totalAmountOfJSSkills = transData.javaScriptTransactionData.reduce(
   0
 );
 
+const totalGrade = transData.validProgressData.reduce((a, b) => a + b.grade, 0);
+
+const successRate =
+  (transData.validProgressData
+    .filter((p) => p.grade >= 1)
+    .reduce((a, b) => a + b.grade, 0) *
+    100) /
+  totalGrade;
+
+const failureRate =
+  (transData.validProgressData
+    .filter((p) => p.grade < 1)
+    .reduce((a, b) => a + b.grade, 0) *
+    100) /
+  totalGrade;
+
 export function createSummary() {
   const totalXpsEl = createElement(
     `<strong>Total Xps</strong> : ${totalXps}`,
@@ -30,9 +46,17 @@ export function createSummary() {
     "p"
   );
 
+  const sucessRateEL = createElement(
+    `<strong>Success | Failure rates</strong> : ${Math.round(
+      successRate
+    )}% | ${Math.round(failureRate)}%`,
+    "p"
+  );
+
   summaryEl.append(
     totalXpsEl,
     totalAmountOfGoSkillsEl,
-    totalAmountOfJSSkillsEl
+    totalAmountOfJSSkillsEl,
+    sucessRateEL
   );
 }
