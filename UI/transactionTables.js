@@ -1,10 +1,5 @@
 import { transactionsTableHeaders, userData } from "../data/data.js";
-import {
-  goTransTable,
-  jsTransTable,
-  xpTransTable,
-  transTable,
-} from "../queries/domQueries.js";
+import { transTable } from "../queries/domQueries.js";
 
 const transactionData = userData[1].data.transaction;
 const golangTransactionData = transactionData.filter(
@@ -92,10 +87,4 @@ export function golangTransactionTable() {
     "Your transactions in Golang",
     transTable
   );
-}
-
-export function renderTransTables() {
-  golangTransactionTable();
-  javaScriptTransactionTable();
-  xpTransactionTable();
 }
