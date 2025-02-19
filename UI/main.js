@@ -1,7 +1,8 @@
 import { renderTransTables } from "./transactionTables.js";
-import { displayFirstName } from "./userProfile.js";
+import { createUserProfile, displayFirstName } from "./userProfile.js";
 
 function main() {
+  createUserProfile();
   displayFirstName();
   renderTransTables();
 }
