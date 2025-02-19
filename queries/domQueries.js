@@ -17,6 +17,7 @@ const transTable = document.querySelector("#trans-table");
 const svgContainer = document.querySelector("#svg-container");
 const gradeBtn = document.querySelector("#gradeBtn");
 const personalInfo = document.querySelector("#personal-info");
+const summaryEl = document.querySelector("#summary");
 
 export {
   usernameOrEmailEl,
@@ -38,4 +39,5 @@ export {
   svgContainer,
   gradeBtn,
   personalInfo,
+  summaryEl,
 };
