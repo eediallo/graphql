@@ -47,9 +47,9 @@ export function createSummary() {
   );
 
   const sucessRateEL = createElement(
-    `<strong>Success | Failure rates</strong> : ${Math.round(
+    `<strong>Success | Failure rates</strong> : <span id="success-rate">${Math.round(
       successRate
-    )}% | ${Math.round(failureRate)}%`,
+    )}%</span> | <span id="failure-rate">${Math.round(failureRate)}%</span>`,
     "p"
   );
 
