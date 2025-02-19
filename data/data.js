@@ -19,6 +19,7 @@ const progressTableHeaders = [
     id: "ID",
     project: "Project",
     grade: "Grade",
+    status: "Status",
   },
 ];
 
