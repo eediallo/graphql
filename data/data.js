@@ -10,7 +10,7 @@ const transactionsTableHeaders = [
     type: "Type",
     amount: "Amount",
     campus: "Campus",
-    path: "Path",
+    project: "Project",
   },
 ];
 
