@@ -65,6 +65,36 @@ export function createLineGraph(data) {
     svg.appendChild(text);
   }
 
+  // Add hover effect to show amount
+  data.forEach((d, i) => {
+    const x = i * scaleX;
+    const y = 200 - d.amount * scaleY;
+    const circle = document.createElementNS(svgNS, "circle");
+    circle.setAttribute("cx", x);
+    circle.setAttribute("cy", y);
+    circle.setAttribute("r", "3");
+    circle.setAttribute("fill", "red");
+
+    const tooltip = document.createElementNS(svgNS, "text");
+    tooltip.setAttribute("x", x);
+    tooltip.setAttribute("y", y - 10);
+    tooltip.setAttribute("font-size", "10");
+    tooltip.setAttribute("text-anchor", "middle");
+    tooltip.setAttribute("visibility", "hidden");
+    tooltip.textContent = d.amount;
+
+    circle.addEventListener("mouseover", () => {
+      tooltip.setAttribute("visibility", "visible");
+    });
+
+    circle.addEventListener("mouseout", () => {
+      tooltip.setAttribute("visibility", "hidden");
+    });
+
+    svg.appendChild(circle);
+    svg.appendChild(tooltip);
+  });
+
   svg.appendChild(path);
   svg.appendChild(xAxis);
   svg.appendChild(yAxis);
