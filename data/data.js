@@ -14,4 +14,12 @@ const transactionsTableHeaders = [
   },
 ];
 
-export { userData, transactionsTableHeaders };
+const progressTableHeaders = [
+  {
+    id: "ID",
+    project: "Project",
+    grade: "Grade",
+  },
+];
+
+export { userData, transactionsTableHeaders, progressTableHeaders };
