@@ -12,7 +12,7 @@ export function displayFirstName() {
 }
 
 export function createUserProfile() {
-  const fullName = createElement(`${firstName} ${lastName}`, "h1");
+  const fullName = createElement(`${firstName} ${lastName}`, "h2");
   const telEl = createElement(`<strong>Tel</strong>: ${tel}`, "p");
   const emailEl = createElement(`<strong>Email</strong>: ${email}`, "p");
   const locationEl = createElement(
