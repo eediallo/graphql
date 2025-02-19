@@ -12,7 +12,7 @@ export function createProgressTableCeils(data) {
   const project = data.path.split("/").at(-1);
   const projectId = createElement(data.id, "td");
   const projectName = createElement(project, "td");
-  const projectGrade = createElement(data.grade, "td");
+  const projectGrade = createElement(data.grade.toFixed(2), "td");
   const status = data.grade >= 1 ? "Pass" : "Fail";
   const statusEl = createElement(status, "td");
   const projectTr = createAndAppendToElement(
