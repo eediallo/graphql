@@ -4,10 +4,12 @@ import { graphqlQueries } from "../queries/grapqlQueries.js";
 
 export async function retriveUserData() {
   const jwt = getData("jwt");
-  const [userProfile, transactionData, progressData] = await Promise.all([
-    getUserData(jwt, graphqlQueries.profileQuery),
-    getUserData(jwt, graphqlQueries.rewardTransactionQuery),
-    getUserData(jwt, graphqlQueries.progressQuery),
-  ]);
-  return [userProfile, transactionData, progressData];
+  const [userProfile, transactionData, progressData, auditData] =
+    await Promise.all([
+      getUserData(jwt, graphqlQueries.profileQuery),
+      getUserData(jwt, graphqlQueries.rewardTransactionQuery),
+      getUserData(jwt, graphqlQueries.progressQuery),
+      getUserData(jwt, graphqlQueries.auditQuery),
+    ]);
+  return [userProfile, transactionData, progressData, auditData];
 }
