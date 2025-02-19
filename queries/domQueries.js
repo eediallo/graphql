@@ -15,6 +15,7 @@ const jsTransBtn = document.querySelector("#jsTransBtn");
 const xpTransBtn = document.querySelector("#xpTransBtn");
 const transTable = document.querySelector("#trans-table");
 const svgContainer = document.querySelector("#svg-container");
+const gradeBtn = document.querySelector("#gradeBtn");
 
 export {
   usernameOrEmailEl,
@@ -34,4 +35,5 @@ export {
   jsTransBtn,
   transTable,
   svgContainer,
+  gradeBtn,
 };
