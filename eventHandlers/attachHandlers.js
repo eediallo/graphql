@@ -22,7 +22,7 @@ export function attachEventHandlers() {
     });
   }
 
-  if (loginBtn) {
+  if (logoutBtn) {
     logoutBtn.addEventListener("click", logout);
   }
 
