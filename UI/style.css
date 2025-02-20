@@ -66,7 +66,7 @@ header p {
   flex-wrap: wrap;
   max-width: 100%;
   justify-content: space-around;
-  gap: 40px;
+  gap: 100px;
   margin-top: 30px;
 }
 
@@ -137,7 +137,7 @@ tr:hover,
 }
 
 .bar:hover {
-  fill: darkblue;
+  fill: darkgreen;
 }
 
 .axis {
