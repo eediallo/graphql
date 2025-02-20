@@ -38,7 +38,7 @@ export function createProgressTableHeader() {
 export async function createProgressTable() {
   const validProgressData = await getValideProgressData();
   transTable.innerHTML = "";
-  const caption = createElement("Your grade per project", "caption");
+  const caption = createElement("Grade Per Project Table", "caption");
   const tHeader = createProgressTableHeader();
   const progressList = validProgressData.map(createProgressTableCeils);
   const tBody = createAndAppendToElement(progressList, "tbody");
