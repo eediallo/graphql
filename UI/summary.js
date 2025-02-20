@@ -1,38 +1,41 @@
-import { transData } from "../data/data.js";
+import {
+  getGoTransactionData,
+  getJSTransactionData,
+  getValideProgressData,
+  getXPsTransactionData,
+} from "../data/data.js";
 import { summaryEl } from "../queries/domQueries.js";
 import { createElement } from "./helperFunctions.js";
 
-const totalXps = transData.xpTransactionData.reduce((a, b) => a + b.amount, 0);
+export async function createSummary() {
+  const xpsData = await getXPsTransactionData();
+  const totalAmountOfXps = xpsData.reduce((a, b) => a + b.amount, 0);
 
-const totalAmountOfGoSkills = transData.golangTransactionData.reduce(
-  (a, b) => a + b.amount,
-  0
-);
+  const goSkillsData = await getGoTransactionData();
+  const totalAmountOfGoSkills = goSkillsData.reduce((a, b) => a + b.amount, 0);
 
-const totalAmountOfJSSkills = transData.javaScriptTransactionData.reduce(
-  (a, b) => a + b.amount,
-  0
-);
+  const jsSkillsData = await getJSTransactionData();
+  const totalAmountOfJSSkills = jsSkillsData.reduce((a, b) => a + b.amount, 0);
 
-const totalGrade = transData.validProgressData.reduce((a, b) => a + b.grade, 0);
+  const validProgressData = await getValideProgressData();
+  const totalGrade = validProgressData.reduce((a, b) => a + b.grade, 0);
 
-const successRate =
-  (transData.validProgressData
-    .filter((p) => p.grade >= 1)
-    .reduce((a, b) => a + b.grade, 0) *
-    100) /
-  totalGrade;
+  const successRate =
+    (validProgressData
+      .filter((p) => p.grade >= 1)
+      .reduce((a, b) => a + b.grade, 0) *
+      100) /
+    totalGrade;
 
-const failureRate =
-  (transData.validProgressData
-    .filter((p) => p.grade < 1)
-    .reduce((a, b) => a + b.grade, 0) *
-    100) /
-  totalGrade;
+  const failureRate =
+    (validProgressData
+      .filter((p) => p.grade < 1)
+      .reduce((a, b) => a + b.grade, 0) *
+      100) /
+    totalGrade;
 
-export function createSummary() {
-  const totalXpsEl = createElement(
-    `<strong>Total Xps</strong> : ${totalXps}`,
+  const totalAmountOfXpsEl = createElement(
+    `<strong>Total Xps</strong> : ${totalAmountOfXps}`,
     "p"
   );
 
@@ -46,7 +49,7 @@ export function createSummary() {
     "p"
   );
 
-  const sucessRateEL = createElement(
+  const successRateEl = createElement(
     `<strong>Success | Failure rates</strong> : <span id="success-rate">${Math.round(
       successRate
     )}%</span> | <span id="failure-rate">${Math.round(failureRate)}%</span>`,
@@ -54,9 +57,9 @@ export function createSummary() {
   );
 
   summaryEl.append(
-    totalXpsEl,
+    totalAmountOfXpsEl,
     totalAmountOfGoSkillsEl,
     totalAmountOfJSSkillsEl,
-    sucessRateEL
+    successRateEl
   );
 }
