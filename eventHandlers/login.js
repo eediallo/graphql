@@ -27,7 +27,7 @@ export async function login(e) {
     errorMsgEl.textContent = "";
     alert("Login successful!");
     setTimeout(() => {
-      redirectToPage("http://localhost:8080/dashboard.html");
+      redirectToPage("/dashboard.html");
     }, 1000);
   } catch (error) {
     errorMsgEl.textContent = error.message;
