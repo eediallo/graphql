@@ -1,26 +1,45 @@
-import { getUserId } from "./getUserId.js";
-import { getData } from "./storage.js";
+import { retriveUserData } from "./retriveUserData.js";
 
-const userID = getUserId();
-const userData = getData(userID);
+export async function getTransactionData() {
+  const userData = await retriveUserData();
+  console.log(userData);
+  return userData[1].data.transaction;
+}
 
-const transactionData = userData[1].data.transaction;
-const golangTransactionData = transactionData.filter(
-  (trans) => trans.type === "skill_go"
-);
+export async function getProgressData() {
+  const userData = await retriveUserData();
+  return userData[2].data.progress;
+}
 
-const javaScriptTransactionData = transactionData.filter(
-  (trans) => trans.type === "skill_js"
-);
+export async function getGoTransactionData() {
+  const transactionData = await getTransactionData();
+  const golangTransactionData = transactionData.filter(
+    (trans) => trans.type === "skill_go"
+  );
+  return golangTransactionData;
+}
 
-const xpTransactionData = transactionData.filter(
-  (trans) => trans.type === "xp"
-);
+export async function getJSTransactionData() {
+  const transactionData = await getTransactionData();
+  const jsTransactionData = transactionData.filter(
+    (trans) => trans.type === "skill_js"
+  );
+  return jsTransactionData;
+}
 
-const progressData = userData[2].data.progress;
-const validProgressData = progressData.filter(
-  (progress) => progress.grade !== null
-);
+export async function getXPsTransactionData() {
+  const transactionData = await getTransactionData();
+  const xpTransactionData = transactionData.filter(
+    (trans) => trans.type === "xp"
+  );
+  return xpTransactionData;
+}
+
+export async function getValideProgressData() {
+  const progessData = await getProgressData();
+  const validProgressData = progessData.filter((p) => p.grade !== null);
+  return validProgressData;
+}
 
 const transactionsTableHeaders = [
   {
@@ -40,10 +59,5 @@ const progressTableHeaders = [
     status: "Status",
   },
 ];
-const transData = {
-  golangTransactionData,
-  javaScriptTransactionData,
-  xpTransactionData,
-  validProgressData,
-};
-export { userData, transactionsTableHeaders, progressTableHeaders, transData };
+
+export { transactionsTableHeaders, progressTableHeaders };
