@@ -2,11 +2,7 @@ import { svgContainer } from "../queries/domQueries.js";
 
 export function createCircleGraph(data) {
   svgContainer.innerHTML = "";
-  const total = data.length;
-  const passCount = data.filter((d) => d.grade >= 1).length;
-  const failCount = total - passCount;
-  const passPercentage = (passCount / total) * 100;
-  const failPercentage = (failCount / total) * 100;
+  const { passPercentage, failPercentage } = calculatePassFailPercentages(data);
 
   const svgNamespace = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(svgNamespace, "svg");
@@ -42,4 +38,49 @@ export function createCircleGraph(data) {
   svg.appendChild(failCircle);
   svg.appendChild(passCircle);
   svgContainer.append(svg);
+
+  createLegends(passPercentage, failPercentage);
+}
+
+export function calculatePassFailPercentages(data) {
+  const total = data.length;
+  const passCount = data.filter((d) => d.grade >= 1).length;
+  const failCount = total - passCount;
+  const passPercentage = (passCount / total) * 100;
+  const failPercentage = (failCount / total) * 100;
+  return { passPercentage, failPercentage };
+}
+
+function createLegends(passPercentage, failPercentage) {
+  const legendContainer = document.createElement("div");
+  legendContainer.style.display = "flex";
+  legendContainer.style.justifyContent = "space-around";
+  legendContainer.style.marginTop = "10px";
+
+  const passLegend = document.createElement("div");
+  passLegend.style.display = "flex";
+  passLegend.style.alignItems = "center";
+  const passColorBox = document.createElement("div");
+  passColorBox.style.width = "20px";
+  passColorBox.style.height = "20px";
+  passColorBox.style.backgroundColor = "green";
+  passColorBox.style.marginRight = "5px";
+  const passText = document.createElement("span");
+  passText.textContent = `Pass: ${passPercentage.toFixed(2)}%`;
+  passLegend.append(passColorBox, passText);
+
+  const failLegend = document.createElement("div");
+  failLegend.style.display = "flex";
+  failLegend.style.alignItems = "center";
+  const failColorBox = document.createElement("div");
+  failColorBox.style.width = "20px";
+  failColorBox.style.height = "20px";
+  failColorBox.style.backgroundColor = "red";
+  failColorBox.style.marginRight = "5px";
+  const failText = document.createElement("span");
+  failText.textContent = `Fail: ${failPercentage.toFixed(2)}%`;
+  failLegend.append(failColorBox, failText);
+
+  legendContainer.append(passLegend, failLegend);
+  svgContainer.append(legendContainer);
 }
