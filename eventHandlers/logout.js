@@ -5,5 +5,5 @@ export function logout() {
   let jwtToken = getData("jwt");
   jwtToken = null;
   removeItem("jwt");
-  redirectToPage("index.html");
+  redirectToPage("/");
 }
