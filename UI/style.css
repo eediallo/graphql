@@ -129,3 +129,29 @@ tr:hover,
 #failure-rate {
   color: red;
 }
+
+/* New styles for bar graph */
+.bar {
+  fill: blue;
+  transition: fill 0.3s ease;
+}
+
+.bar:hover {
+  fill: darkblue;
+}
+
+.axis {
+  stroke: black;
+}
+
+.axis-label {
+  font-size: 10px;
+  text-anchor: middle;
+}
+
+.y-axis-label {
+  font-size: 12px;
+  text-anchor: middle;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
