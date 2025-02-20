@@ -35,17 +35,17 @@ export async function createSummary() {
     totalGrade;
 
   const totalAmountOfXpsEl = createElement(
-    `<strong>Total Xps</strong> : ${totalAmountOfXps}`,
+    `<strong>Total amount of XPs</strong> : ${totalAmountOfXps}`,
     "p"
   );
 
   const totalAmountOfGoSkillsEl = createElement(
-    `<strong>Total Amount of Go skills</strong> : ${totalAmountOfGoSkills}`,
+    `<strong>Total amount of Go skills</strong> : ${totalAmountOfGoSkills}`,
     "p"
   );
 
   const totalAmountOfJSSkillsEl = createElement(
-    `<strong>Total Amount of JS skills</strong> : ${totalAmountOfJSSkills}`,
+    `<strong>Total amount of JS skills</strong> : ${totalAmountOfJSSkills}`,
     "p"
   );
 
