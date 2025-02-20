@@ -1,11 +1,10 @@
 import { attachEventHandlers } from "../eventHandlers/attachHandlers.js";
 import { createSummary } from "./summary.js";
-import { createUserProfile, displayFirstName } from "./userProfile.js";
+import { createUserProfile } from "./userProfile.js";
 
-function main() {
-  createUserProfile();
-  createSummary();
-  displayFirstName();
+async function main() {
+  await createUserProfile();
+  await createSummary();
   attachEventHandlers();
 }
 
