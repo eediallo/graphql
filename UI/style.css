@@ -132,7 +132,7 @@ tr:hover,
 
 /* New styles for bar graph */
 .bar {
-  fill: blue;
+  fill: green;
   transition: fill 0.3s ease;
 }
 
