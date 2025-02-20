@@ -5,8 +5,8 @@ export function createBarGraph(data) {
   const svgNS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(svgNS, "svg");
   svg.setAttribute("width", "500");
-  svg.setAttribute("height", "250"); // Increased height to accommodate labels
-  svg.setAttribute("viewBox", "0 0 500 250");
+  svg.setAttribute("height", "300"); // Increased height to accommodate labels
+  svg.setAttribute("viewBox", "0 0 500 300");
 
   const maxAmount = Math.max(...data.map((d) => d.amount));
   const barWidth = 500 / data.length;
@@ -23,7 +23,7 @@ export function createBarGraph(data) {
     rect.setAttribute("y", y);
     rect.setAttribute("width", barWidth - 1);
     rect.setAttribute("height", height);
-    rect.setAttribute("fill", "blue");
+    rect.setAttribute("class", "bar");
 
     // Add title for hover effect
     const title = document.createElementNS(svgNS, "title");
@@ -39,7 +39,7 @@ export function createBarGraph(data) {
   xAxis.setAttribute("y1", "200");
   xAxis.setAttribute("x2", "500");
   xAxis.setAttribute("y2", "200");
-  xAxis.setAttribute("stroke", "black");
+  xAxis.setAttribute("class", "axis");
 
   // Create y-axis
   const yAxis = document.createElementNS(svgNS, "line");
@@ -47,7 +47,7 @@ export function createBarGraph(data) {
   yAxis.setAttribute("y1", "0");
   yAxis.setAttribute("x2", "0");
   yAxis.setAttribute("y2", "200");
-  yAxis.setAttribute("stroke", "black");
+  yAxis.setAttribute("class", "axis");
 
   // Add x-axis labels (Project Names)
   data.forEach((d, i) => {
@@ -57,8 +57,7 @@ export function createBarGraph(data) {
     const projectName = document.createElementNS(svgNS, "text");
     projectName.setAttribute("x", x);
     projectName.setAttribute("y", "220"); // Adjusted y position to be below the x-axis
-    projectName.setAttribute("font-size", "10");
-    projectName.setAttribute("text-anchor", "middle");
+    projectName.setAttribute("class", "axis-label");
     projectName.setAttribute("transform", `rotate(45, ${x}, 220)`); // Adjusted rotation point
     const project = d.path.split("/").at(-1);
     projectName.textContent = project;
@@ -71,7 +70,7 @@ export function createBarGraph(data) {
     const text = document.createElementNS(svgNS, "text");
     text.setAttribute("x", "-5");
     text.setAttribute("y", y);
-    text.setAttribute("font-size", "10");
+    text.setAttribute("class", "axis-label");
     text.setAttribute("text-anchor", "end");
     text.setAttribute("dominant-baseline", "middle");
     text.textContent = i.toFixed(0);
@@ -82,9 +81,7 @@ export function createBarGraph(data) {
   const yAxisLabel = document.createElementNS(svgNS, "text");
   yAxisLabel.setAttribute("x", "-30");
   yAxisLabel.setAttribute("y", "100");
-  yAxisLabel.setAttribute("font-size", "12");
-  yAxisLabel.setAttribute("text-anchor", "middle");
-  yAxisLabel.setAttribute("transform", "rotate(-90 -30 100)");
+  yAxisLabel.setAttribute("class", "y-axis-label");
   yAxisLabel.textContent = "Amount";
   svg.appendChild(yAxisLabel);
 
