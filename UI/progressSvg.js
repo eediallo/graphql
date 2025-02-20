@@ -1,6 +1,6 @@
 import { svgContainer } from "../queries/domQueries.js";
 
-export function createCircleGraph(data) {
+export function createPieChart(data) {
   svgContainer.innerHTML = "";
   const { passPercentage, failPercentage } = calculatePassFailPercentages(data);
 
@@ -10,36 +10,43 @@ export function createCircleGraph(data) {
   svg.setAttribute("height", "200");
   svg.setAttribute("viewBox", "0 0 32 32");
 
-  const passCircle = document.createElementNS(svgNamespace, "circle");
-  passCircle.setAttribute("r", "16");
-  passCircle.setAttribute("cx", "16");
-  passCircle.setAttribute("cy", "16");
-  passCircle.setAttribute("fill", "transparent");
-  passCircle.setAttribute("stroke", "green");
-  passCircle.setAttribute("stroke-width", "32");
-  passCircle.setAttribute(
-    "stroke-dasharray",
-    `${passPercentage} ${100 - passPercentage}`
-  );
+  const passArc = createArc(16, 16, 16, 0, (passPercentage / 100) * 360, "green");
+  const failArc = createArc(16, 16, 16, (passPercentage / 100) * 360, 360, "red");
 
-  const failCircle = document.createElementNS(svgNamespace, "circle");
-  failCircle.setAttribute("r", "16");
-  failCircle.setAttribute("cx", "16");
-  failCircle.setAttribute("cy", "16");
-  failCircle.setAttribute("fill", "transparent");
-  failCircle.setAttribute("stroke", "red");
-  failCircle.setAttribute("stroke-width", "32");
-  failCircle.setAttribute(
-    "stroke-dasharray",
-    `${failPercentage} ${100 - failPercentage}`
-  );
-  failCircle.setAttribute("transform", "rotate(-90 16 16)");
-
-  svg.appendChild(failCircle);
-  svg.appendChild(passCircle);
+  svg.appendChild(passArc);
+  svg.appendChild(failArc);
   svgContainer.append(svg);
 
   createLegends(passPercentage, failPercentage);
+}
+
+function createArc(cx, cy, r, startAngle, endAngle, color) {
+  const start = polarToCartesian(cx, cy, r, endAngle);
+  const end = polarToCartesian(cx, cy, r, startAngle);
+
+  const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+
+  const d = [
+    "M", start.x, start.y,
+    "A", r, r, 0, largeArcFlag, 0, end.x, end.y,
+    "L", cx, cy,
+    "Z"
+  ].join(" ");
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  path.setAttribute("fill", color);
+
+  return path;
+}
+
+function polarToCartesian(cx, cy, r, angleInDegrees) {
+  const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+
+  return {
+    x: cx + (r * Math.cos(angleInRadians)),
+    y: cy + (r * Math.sin(angleInRadians))
+  };
 }
 
 export function calculatePassFailPercentages(data) {
