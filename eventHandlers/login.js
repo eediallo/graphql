@@ -2,7 +2,6 @@ import { saveJwtToLocalStorage, getData } from "../data/storage.js";
 import { passwordEl, usernameOrEmailEl } from "../queries/domQueries.js";
 import { getUserJWT } from "../data/getUserJWT.js";
 import { redirectToPage } from "../redirect.js";
-import { retrieveAndStoreUserData } from "../data/retriveAndStoreUserData.js";
 
 export async function login(e) {
   e.preventDefault();
@@ -25,7 +24,6 @@ export async function login(e) {
 
     saveJwtToLocalStorage(jwtToken);
 
-    await retrieveAndStoreUserData();
 
     errorMsgEl.textContent = "";
     alert("Login successful!");
