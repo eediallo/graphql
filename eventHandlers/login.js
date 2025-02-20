@@ -24,7 +24,6 @@ export async function login(e) {
 
     saveJwtToLocalStorage(jwtToken);
 
-
     errorMsgEl.textContent = "";
     alert("Login successful!");
     setTimeout(() => {
