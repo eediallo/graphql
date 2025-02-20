@@ -1,5 +1,11 @@
 import { retriveUserData } from "./retriveUserData.js";
 
+export async function getUserProfileData() {
+  const userData = await retriveUserData();
+  console.log(userData);
+  return userData[0].data.user;
+}
+
 export async function getTransactionData() {
   const userData = await retriveUserData();
   console.log(userData);
