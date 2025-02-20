@@ -1,7 +1,7 @@
 import { getValideProgressData, progressTableHeaders } from "../data/data.js";
 import { transTable } from "../queries/domQueries.js";
 import { createElement, createAndAppendToElement } from "./helperFunctions.js";
-import { createCircleGraph } from "./progressSvg.js";
+import { createPieChart } from "./progressSvg.js";
 
 export function createProgressTableCeils(data) {
   const project = data.path.split("/").at(-1);
@@ -43,5 +43,5 @@ export async function createProgressTable() {
   const progressList = validProgressData.map(createProgressTableCeils);
   const tBody = createAndAppendToElement(progressList, "tbody");
   transTable.append(caption, tHeader, tBody);
-  createCircleGraph(validProgressData);
+  createPieChart(validProgressData);
 }
