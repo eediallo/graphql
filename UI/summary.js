@@ -6,6 +6,7 @@ import {
 } from "../data/data.js";
 import { summaryEl } from "../queries/domQueries.js";
 import { createElement } from "./helperFunctions.js";
+import { calculatePassFailPercentages } from "./progressSvg.js";
 
 export async function createSummary() {
   const xpsData = await getXPsTransactionData();
@@ -18,21 +19,9 @@ export async function createSummary() {
   const totalAmountOfJSSkills = jsSkillsData.reduce((a, b) => a + b.amount, 0);
 
   const validProgressData = await getValideProgressData();
-  const totalGrade = validProgressData.reduce((a, b) => a + b.grade, 0);
 
-  const successRate =
-    (validProgressData
-      .filter((p) => p.grade >= 1)
-      .reduce((a, b) => a + b.grade, 0) *
-      100) /
-    totalGrade;
-
-  const failureRate =
-    (validProgressData
-      .filter((p) => p.grade < 1)
-      .reduce((a, b) => a + b.grade, 0) *
-      100) /
-    totalGrade;
+  const { passPercentage, failPercentage } =
+    calculatePassFailPercentages(validProgressData);
 
   const totalAmountOfXpsEl = createElement(
     `<strong>Total amount of XPs</strong> : ${totalAmountOfXps}`,
@@ -51,8 +40,8 @@ export async function createSummary() {
 
   const successRateEl = createElement(
     `<strong>Success | Failure rates</strong> : <span id="success-rate">${Math.round(
-      successRate
-    )}%</span> | <span id="failure-rate">${Math.round(failureRate)}%</span>`,
+      passPercentage
+    )}%</span> | <span id="failure-rate">${Math.round(failPercentage)}%</span>`,
     "p"
   );
 
