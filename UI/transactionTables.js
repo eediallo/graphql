@@ -10,7 +10,7 @@ export async function javaScriptTransactionTable() {
   transTable.innerHTML = "";
   createTable(
     await getJSTransactionData(),
-    "Your Transaction in JavaScript",
+    "JavaScript Transaction Table",
     transTable
   );
 }
@@ -19,7 +19,7 @@ export async function xpTransactionTable() {
   transTable.innerHTML = "";
   createTable(
     await getXPsTransactionData(),
-    "Your XPs transaction",
+    "XPs Transaction Table",
     transTable
   );
 }
@@ -28,7 +28,7 @@ export async function golangTransactionTable() {
   transTable.innerHTML = "";
   createTable(
     await getGoTransactionData(),
-    "Your transactions in Golang",
+    "Golang Transaction Table",
     transTable
   );
 }
