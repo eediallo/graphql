@@ -27,17 +27,25 @@ export function attachEventHandlers() {
   }
 
   if (goTransBtn) {
-    goTransBtn.addEventListener("click", golangTransactionTable);
+    goTransBtn.addEventListener("click", async () => {
+      await golangTransactionTable();
+    });
   }
   if (xpTransBtn) {
-    xpTransBtn.addEventListener("click", xpTransactionTable);
+    xpTransBtn.addEventListener("click", async () => {
+      await xpTransactionTable();
+    });
   }
 
   if (jsTransBtn) {
-    jsTransBtn.addEventListener("click", javaScriptTransactionTable);
+    jsTransBtn.addEventListener("click", async () => {
+      await javaScriptTransactionTable();
+    });
   }
 
   if (gradeBtn) {
-    gradeBtn.addEventListener("click", createProgressTable);
+    gradeBtn.addEventListener("click", async () => {
+      await createProgressTable();
+    });
   }
 }
