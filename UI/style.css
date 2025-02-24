@@ -155,3 +155,14 @@ tr:hover,
   transform: rotate(-90deg);
   transform-origin: center;
 }
+
+
+@media screen and (max-width: 768px) {
+  #profile-container,   #btns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+}
