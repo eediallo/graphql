@@ -5,25 +5,26 @@ import { createPieChart } from "./progressSvg.js";
 
 export function createProgressTableCeils(data) {
   const project = data.path.split("/").at(-1);
-  const projectId = createElement(data.id, "td");
+  // const projectId = createElement(data.id, "td");
   const projectName = createElement(project, "td");
   const projectGrade = createElement(data.grade.toFixed(2), "td");
   const status = data.grade >= 1 ? "Pass" : "Fail";
   const statusEl = createElement(status, "td");
   const projectTr = createAndAppendToElement(
-    [projectId, projectName, projectGrade, statusEl],
+    [projectName, projectGrade, statusEl],
     "tr"
   );
   return projectTr;
 }
 
 export function createProgressTableHeadCeils(data) {
-  const projectId = createElement(data.id, "th");
+  // const projectId = createElement(data.id, "th");
   const projectName = createElement(data.project, "th");
   const projectGrade = createElement(data.grade, "th");
   const status = createElement(data.status, "th");
+  const attempts = createElement(data.attempts, "th");
   const projectTr = createAndAppendToElement(
-    [projectId, projectName, projectGrade, status],
+    [projectName, projectGrade, status, attempts],
     "tr"
   );
   return projectTr;
