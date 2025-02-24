@@ -2,6 +2,7 @@ import { retriveUserData } from "./retriveUserData.js";
 
 export async function getUserProfileData() {
   const userData = await retriveUserData();
+  console.log(userData, "userData====>");
   return userData[0].data.user;
 }
 
