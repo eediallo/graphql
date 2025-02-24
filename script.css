@@ -5,6 +5,11 @@ body {
     align-items: center;
 }
 
+header div{
+    width: 200px;
+    margin: 0 auto
+}
+
 #login-form{
 display: flex;
 flex-direction: column;
@@ -12,6 +17,7 @@ justify-content: center;
 background-color:  #ece9e6;
 padding: 20px;
 border-radius: 8px;
+margin-top: 30px;
 }
 
 input{
@@ -38,4 +44,14 @@ button:hover {
 
 #errorMsgEl{
     color: red;
+}
+
+img{
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#heart-emoji {
+    color: green;
 }
