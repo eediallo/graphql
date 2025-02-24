@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color:  #ece9e6;
+padding: 20px;
+border-radius: 8px;
+}
+
+input{
+    padding: 8px;
+    border: none;
+}
+
+input:focus{
+    border: solid 1px green;
+}
+
+
+button {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(73, 132, 73);
+}
+
+#errorMsgEl{
+    color: red;
+}
