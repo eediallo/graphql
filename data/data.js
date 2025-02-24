@@ -43,6 +43,8 @@ export async function getXPsTransactionData() {
 export async function getValideProgressData() {
   const progessData = await getProgressData();
   const validProgressData = progessData.filter((p) => p.grade !== null);
+  const failedProjects = new Set(progessData);
+  console.log(failedProjects, "<<<= failed projects");
   return validProgressData;
 }
 
@@ -62,6 +64,7 @@ const progressTableHeaders = [
     project: "Project",
     grade: "Grade",
     status: "Status",
+    attempts: "Attempts",
   },
 ];
 
