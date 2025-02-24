@@ -30,7 +30,6 @@ export async function login(e) {
       redirectToPage("/dashboard.html");
     }, 1000);
   } catch (error) {
-    errorMsgEl.textContent = error.message;
-    console.error("Login Error:", error);
+    errorMsgEl.textContent = "User does not exist or password is incorrect";
   }
 }
