@@ -43,9 +43,9 @@ export async function getXPsTransactionData() {
 export async function getValideProgressData() {
   const progessData = await getProgressData();
   const validProgressData = progessData.filter((p) => p.grade !== null);
-  const failedProjects = new Set(progessData);
-  console.log(failedProjects, "<<<= failed projects");
-  return validProgressData;
+  const sucessProjects = validProgressData.filter((p) => p.grade >= 1);
+  const faildedPorjects = validProgressData.filter((p) => p.grade < 1);
+  return [...sucessProjects, ...faildedPorjects];
 }
 
 const transactionsTableHeaders = [
