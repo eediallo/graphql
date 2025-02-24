@@ -7,7 +7,7 @@ const profileQuery = `#graphql
 }`;
 const rewardTransactionQuery = `#graphql
 {
-  transaction(where: {eventId: {_eq: 433}, type: {_in: ["skill_js", "skill_go", "xp"]}}) {
+  transaction(where: {type: {_in: ["skill_js", "skill_go", "xp"]}}) {
     id,
     type,
     amount,
@@ -34,7 +34,7 @@ const roleQuery = `#graphql
 
 const progressQuery = `#graphql
 {
-  progress(where: {eventId: {_eq: 433}}) {
+  progress{
     id,
     createdAt,
     updatedAt,
